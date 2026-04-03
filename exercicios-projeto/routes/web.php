@@ -11,10 +11,7 @@ Route::get('/', function () {
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Http\Controllers\CategoriaController;
-
-Route::get('/paginainicial', function () {
-    return view('welcome');
-});
+use App\Http\Controllers\ProdutoController;
 
 Route::get('/exercicio', function() {
     return view('exercicio');
