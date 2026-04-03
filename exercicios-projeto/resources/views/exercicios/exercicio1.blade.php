@@ -1,9 +1,9 @@
-@extends('layout')
+@extends('exercicios.layout_exer')
 
 @section('conteudo')
 
 <h1>Primeiro exemplo usando Laravel</h1>
-<form method="post" action="/resposta">
+<form method="post" action="/resposta1">
     @CSRF
 <div class="mb-3">
               <label for="valor" class="form-label">Informe o primeiro valor</label>
