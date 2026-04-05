@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 class UnidadeProduto extends Model
 {
-    protected $table = 'unidade_produtos';
+    protected $table = 'unidades_produtos';
 
     public $incrementing = true;
 

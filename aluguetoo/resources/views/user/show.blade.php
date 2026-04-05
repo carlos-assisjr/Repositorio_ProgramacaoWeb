@@ -7,7 +7,7 @@
         @METHOD('DELETE')
 
         <div class="mb-3">
-            <p>Nome: <strong>{{ $user->name }}</strong></p>
+            <p>Nome: <strong>{{ $user->nome }}</strong></p>
         </div>
 
         <div class="mb-3">

@@ -2,7 +2,7 @@
 
 @section('conteudo')
     <h1>Consultar Unidade do Produto</h1>
-    <form method="post" action="/unidades/{{ $unidade->id }}">
+    <form method="post" action="/unidades_produtos/{{ $unidade->id }}">
         @CSRF
         @METHOD('DELETE')
 
@@ -11,7 +11,7 @@
         </div>
 
         <div class="mb-3">
-            <p>Código: <strong>{{ $unidade->codigo }}</strong></p>
+            <p>Número de Série: <strong>{{ $unidade->numero_serie }}</strong></p>
         </div>
 
         <div class="mb-3">
@@ -19,6 +19,6 @@
         </div>
 
         <button type="submit" class="btn btn-danger">Excluir o registro</button>
-        <a href="/unidades" class="btn btn-secondary">Voltar</a>
+        <a href="/unidades_produtos" class="btn btn-secondary">Voltar</a>
     </form>
 @endsection

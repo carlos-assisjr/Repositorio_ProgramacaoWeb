@@ -2,7 +2,7 @@
 
 @section('conteudo')
     <h1>Criar Unidade do Produto</h1>
-    <form method="post" action="/unidade_produtos">
+    <form method="post" action="/unidades_produtos">
         @CSRF
 
         <div class="mb-3">
@@ -15,8 +15,8 @@
         </div>
 
         <div class="mb-3">
-            <label for="numero_serie" class="form-label">Informe o numero de série:</label>
-            <input type="text" id="numero_serie" name="numero_serie" class="form-control" required="">
+            <label for="numero_serie" class="form-label">Informe o número de série:</label>
+            <input type="text" id="numero_serie" name="numero_serie" class="form-control" required>
         </div>
 
         <div class="mb-3">
@@ -25,11 +25,10 @@
                 <option value="DISPONIVEL">DISPONIVEL</option>
                 <option value="ALUGADO">ALUGADO</option>
                 <option value="MANUTENCAO">MANUTENCAO</option>
+                <option value="INATIVO">INATIVO</option>
             </select>
         </div>
 
         <button type="submit" class="btn btn-primary">Enviar</button>
     </form>
 @endsection
-
-@

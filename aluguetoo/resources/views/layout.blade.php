@@ -26,6 +26,8 @@
                             <li><a class="dropdown-item" href="/categorias">Categorias</a></li>
                             <li><a class="dropdown-item" href="/produtos">Produtos</a></li>
                             <li><a class="dropdown-item" href="/users">Usuários</a></li>
+                            <li><a class="dropdown-item" href="/alugueis">Aluguéis</a></li>
+                            <li><a class="dropdown-item" href="/unidades_produtos">Unidades do Produto</a></li>
                         </ul>
                     </li>
                 </ul>
