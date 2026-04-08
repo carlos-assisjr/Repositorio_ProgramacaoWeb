@@ -19,15 +19,15 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="dropdown1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="/index" id="dropdown1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Cadastros
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="dropdown1">
                             <li><a class="dropdown-item" href="/categorias">Categorias</a></li>
-                            <li><a class="dropdown-item" href="/produtos">Produtos</a></li>
-                            <li><a class="dropdown-item" href="/users">Usuários</a></li>
+                            <li><a class="dropdown-item" href="/ferramentas">Ferramentas</a></li>
+                            <li><a class="dropdown-item" href="/lojas">Lojas</a></li>
                             <li><a class="dropdown-item" href="/alugueis">Aluguéis</a></li>
-                            <li><a class="dropdown-item" href="/unidades_produtos">Unidades do Produto</a></li>
+                            <li><a class="dropdown-item" href="/itens_aluguel">Itens do Aluguel</a></li>
                         </ul>
                     </li>
                 </ul>

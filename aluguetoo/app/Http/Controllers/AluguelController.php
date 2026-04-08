@@ -1,8 +1,9 @@
 <?php
+
 namespace App\Http\Controllers;
+
 use App\Models\Aluguel;
 use App\Models\User;
-use App\Models\UnidadeProduto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
@@ -22,38 +23,60 @@ class AluguelController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-public function create()
-{
-    $users = User::all();
-    $unidades = UnidadeProduto::where('status', 'DISPONIVEL')->get();
-
-    return view('aluguel.create', compact('users', 'unidades'));
-}
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function create()
     {
-        Aluguel::create($request->all());
-        return redirect()->route('alugueis.index');
+        $users = User::all(); 
+        return view('aluguel.create', compact('users'));
     }
 
-    /**
-     * Display the specified resource.
-     */
+    public function edit($id)
+    {
+        $aluguel = Aluguel::findOrFail($id);
+        $users = User::all();
+        return view('aluguel.edit', compact('aluguel', 'users'));
+    }
+
+    public function store(Request $request)
+    {
+        try{
+            Aluguel::create($request->all());
+        } catch(Exception $e){
+            Log::error('Erro ao inserir aluguel: '. $e->getMessage(), [
+                'stack' => $e->getTraceAsString()
+            ]);
+        }
+        return redirect()->route('alugueis.index');
+    }
     public function show($id)
     {
         $aluguel = Aluguel::findOrFail($id);
         return view("aluguel.show", compact('aluguel'));
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit($id)
+        /**
+        * Update the specified resource in storage.
+        */  
+    public function update(Request $request, $id)
     {
-        $aluguel = Aluguel::findOrFail($id);
-        return view('aluguel.edit', compact('aluguel'));
+        try{
+            $aluguel = Aluguel::findOrFail($id);
+            $aluguel->update($request->all());
+        } catch(Exception $e){
+            Log::error('Erro ao atualizar aluguel: '. $e->getMessage(), [
+                'stack' => $e->getTraceAsString()
+            ]);
+        }
+        return redirect()->route('alugueis.index');
+    }
+    public function destroy($id)
+    {
+        try{
+            $aluguel = Aluguel::findOrFail($id);
+            $aluguel->delete();
+        } catch(Exception $e){
+            Log::error('Erro ao deletar aluguel: '. $e->getMessage(), [
+                'stack' => $e->getTraceAsString()
+            ]);
+        }
+        return redirect()->route('alugueis.index');
     }
 }

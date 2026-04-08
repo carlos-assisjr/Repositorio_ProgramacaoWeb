@@ -1,7 +1,9 @@
 <?php
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+
 class Aluguel extends Model
 {
     protected $table = 'alugueis';
@@ -9,9 +11,6 @@ class Aluguel extends Model
     public $incrementing = true;
 
     protected $fillable = [
-        'produto_id',
-        'user_id',
-        'data_inicio',
-        'data_fim'
-    ];
+        'cliente_id',
+        'status'];
 }

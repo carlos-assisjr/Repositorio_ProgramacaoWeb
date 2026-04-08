@@ -11,7 +11,11 @@
         </div>
 
         <div class="mb-3">
-            <p>E-mail: <strong>{{ $user->email }}</strong></p>
+            <p>Email: <strong>{{ $user->email }}</strong></p>
+        </div>
+
+        <div class="mb-3">
+            <p>Tipo: <strong>{{ $user->tipo }}</strong></p>
         </div>
 
         <button type="submit" class="btn btn-danger">Excluir o registro</button>

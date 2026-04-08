@@ -1,111 +1,49 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Models;
 
-use App\Models\User;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Log;
-use Exception;
+// use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Database\Factories\UserFactory;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
-class UserController extends Controller
+class User extends Authenticatable
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        $users = User::all();
-        return view('user.index', compact('users'));
-    }
+    /** @use HasFactory<UserFactory> */
+    use HasFactory, Notifiable;
 
     /**
-     * Show the form for creating a new resource.
+     * The attributes that are mass assignable.
+     *
+     * @var list<string>
      */
-    public function create()
-    {
-        return view("user.create");
-    }
+    protected $fillable = [
+        'name',
+        'email',
+        'password',
+    ];
 
     /**
-     * Store a newly created resource in storage.
+     * The attributes that should be hidden for serialization.
+     *
+     * @var list<string>
      */
-    public function store(Request $request)
-    {
-        try {
-            User::create([
-                'name' => $request->name,
-                'email' => $request->email,
-                'senha' => Hash::make($request->password)
-            ]);
-        } catch (Exception $e) {
-            Log::error('Erro ao inserir usuário: ' . $e->getMessage(), [
-                'stack' => $e->getTraceAsString()
-            ]);
-        }
-
-        return redirect()->route('users.index');
-    }
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
 
     /**
-     * Display the specified resource.
+     * Get the attributes that should be cast.
+     *
+     * @return array<string, string>
      */
-    public function show($id)
+    protected function casts(): array
     {
-        $user = User::findOrFail($id);
-        return view("user.show", compact('user'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit($id)
-    {
-        $user = User::findOrFail($id);
-        return view('user.edit', compact('user'));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, $id)
-    {
-        try {
-            $user = User::findOrFail($id);
-
-            $dados = [
-                'nome' => $request->name,
-                'email' => $request->email
-            ];
-
-            if (!empty($request->password)) {
-                $dados['senha'] = Hash::make($request->password);
-            }
-
-            $user->update($dados);
-        } catch (Exception $e) {
-            Log::error('Erro ao alterar usuário: ' . $e->getMessage(), [
-                'stack' => $e->getTraceAsString()
-            ]);
-        }
-
-        return redirect()->route('users.index');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy($id)
-    {
-        try {
-            $user = User::findOrFail($id);
-            $user->delete();
-        } catch (Exception $e) {
-            Log::error('Erro ao excluir usuário: ' . $e->getMessage(), [
-                'stack' => $e->getTraceAsString()
-            ]);
-        }
-
-        return redirect()->route('users.index');
+        return [
+            'email_verified_at' => 'datetime',
+            'password' => 'hashed',
+        ];
     }
 }
