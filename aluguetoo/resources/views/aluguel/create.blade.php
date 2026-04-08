@@ -8,19 +8,18 @@
     <div class="mb-3">
         <label for="cliente_id" class="form-label">Informe o Cliente:</label>
         <select name="cliente_id" id="cliente_id" class="form-select" required>
-            @foreach($clientes as $cliente)
-                <option value="{{ $cliente->id }}">{{ $cliente->nome }}</option>
+            @foreach($clientes as $cl)
+            <option value="{{ $cl->id }}">{{ $cl->nome }}</option>
             @endforeach
         </select>
     </div>
     <div class="mb-3">
         <label for="status" class="form-label">Status:</label>
         <select name="status" id="status" class="form-select" required>
-            <option value="PENDENTE">PENDENTE</option>
-            <option value="CONFIRMADO">CONFIRMADO</option>
-            <option value="EM_ANDAMENTO">EM_ANDAMENTO</option>
-            <option value="FINALIZADO">FINALIZADO</option>
-            <option value="CANCELADO">CANCELADO</option>
+            <option value="RESERVADO">RESERVADO</option>
+            <option value="RETIRADO">RETIRADO</option>
+            <option value="DEVOLVIDO">DEVOLVIDO</option>
+            <option value="ATRASADO">ATRASADO</option>
         </select>
     </div>
 

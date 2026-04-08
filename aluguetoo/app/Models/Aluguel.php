@@ -2,15 +2,22 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Aluguel extends Model
 {
-    protected $table = 'alugueis';
+    use HasFactory;
 
-    public $incrementing = true;
+    protected $table = 'alugueis';
 
     protected $fillable = [
         'cliente_id',
-        'status'];
+        'status'
+    ];
+
+    public function cliente()
+    {
+        return $this->belongsTo(Cliente::class, 'cliente_id');
+    }
 }

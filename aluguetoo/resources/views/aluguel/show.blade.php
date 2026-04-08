@@ -1,23 +1,16 @@
 @extends('layout')
 
 @section('conteudo')
-    <h1>Consultar Aluguel</h1>
-    <form method="post" action="/alugueis/{{ $aluguel->id }}">
-        @csrf
-        @method('DELETE')
+<h1>Detalhes do Aluguel</h1>
 
-        <div class="mb-3">
-            <p>ID: <strong>{{ $aluguel->id }}</strong></p>
-        </div>
+<div class="card">
+    <div class="card-body">
+        <p><strong>ID:</strong> {{ $aluguel->id }}</p>
+        <p><strong>Cliente:</strong> {{ $aluguel->cliente->nome ?? '-' }}</p>
+        <p><strong>Status:</strong> {{ $aluguel->status }}</p>
+    </div>
+</div>
 
-        <div class="mb-3">
-            <p>Cliente: <strong>{{ $aluguel->cliente->nome }}</strong></p>
-
-        <div class="mb-3">
-            <p>Status: <strong>{{ $aluguel->status }}</strong></p>
-        </div>
-
-        <button type="submit" class="btn btn-danger">Excluir o registro</button>
-        <a href="/alugueis" class="btn btn-secondary">Voltar</a>
-    </form>
+<a href="{{ route('alugueis.index') }}" class="btn btn-secondary mt-3">Voltar</a>
+<a href="{{ route('alugueis.edit', $aluguel->id) }}" class="btn btn-warning mt-3">Editar</a>
 @endsection

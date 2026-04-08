@@ -28,7 +28,9 @@
                             <li><a class="dropdown-item" href="/lojas">Lojas</a></li>
                             <li><a class="dropdown-item" href="/alugueis">Aluguéis</a></li>
                             <li><a class="dropdown-item" href="/itens_aluguel">Itens do Aluguel</a></li>
+                            <li><a class="dropdown-item" href="/clientes">Clientes</a></li>
                         </ul>
+
                     </li>
                 </ul>
             </div>
